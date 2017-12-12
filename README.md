@@ -26,7 +26,7 @@ Team workspace to share code snippets
 * New Request - Tory
 * Accept Invite - Kanishk
 * Recommendation Engine - Jean
-* Confirmation - to Reach consensus on final decision
+* Confirmation - to avoid consensus problem, the proposer gets to decide final venue
 
 ### Database - Tables:
 
