@@ -1,0 +1,13 @@
+#Trigger event data
+
+{
+"meetingID": ""
+}
+
+#After Processing the requests, send push to the users involved in following format:
+
+{
+"meetingID": ""
+"recommendations": [] # list of objects obtained 
+"time": ""
+}
