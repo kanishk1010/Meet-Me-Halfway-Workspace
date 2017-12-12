@@ -1,0 +1,17 @@
+# json format for a new meeting request
+
+{
+"userID":"", 
+"meetingDate": "",
+"meetingFromWindow": "",
+"meetingToWindow": "",
+"Preferences":[],
+"Friends":[],
+"ModeTransport": ""
+}
+
+# Response
+
+{
+"MeetingID": ""
+}
