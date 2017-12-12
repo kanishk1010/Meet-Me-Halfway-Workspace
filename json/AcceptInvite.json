@@ -1,0 +1,20 @@
+# Json Data from the server sent with push notification.
+
+{
+"meetingID": "",
+"meetingInitiatorID":"",
+"friendsInvolved": [], #facebookID of each friend
+"Date":"",
+"timeWindowFrom":"",
+"timeWindowTo": "",
+}
+
+# Accept Request from App
+
+{
+"meetingID": "",
+"userID": "",
+"preferences": [],
+"preferredTime": "",
+"transportMode": "" #optional
+}
