@@ -22,16 +22,33 @@ Team workspace to share code snippets
 
 ### Lambdas:
 
-* Retrieve friends - Iris and Kanishk
+* ~~Retrieve friends~~ Register User - Iris and Kanishk
 * New Request - Tory
 * Accept Invite - Kanishk
 * Recommendation Engine - Jean
+* Confirmation - to Reach consensus on final decision
 
 ### Database - Tables:
 
 * User
 * Meetings
 
+#### User table attributes
 
+* ID (unique)
+* Name
+* Email (unique)
+* Registration Token for push (unique)
+* Status (Active/Inactive)
+* Default Location/Address
 
+#### Meetings attributes
+
+* Meeting ID 
+* UserID 
+* Count of User Involved
+* Count of User Accepted (starts with 1 for the initial request)
+* Status (Pending/Completed)
+
+Note: None of the entries are unique
 
