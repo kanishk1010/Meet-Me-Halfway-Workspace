@@ -5,6 +5,7 @@
 "name": "",
 "email": "",
 "age": "",
+"gender": "",
 "registrationToken": "", #for push
 "phone": "", # optional
 "default address": "" #optional address string, could be reverse geo-coded
