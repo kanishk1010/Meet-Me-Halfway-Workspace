@@ -38,9 +38,12 @@ Team workspace to share code snippets
 * ID (unique)
 * Name
 * Email (unique)
+* Age
+* Gender
+* Phone
 * Registration Token for push (unique)
-* Status (Active/Inactive)
 * Default Location/Address
+* Status (Active/Inactive)
 
 #### Meetings attributes
 
@@ -49,6 +52,5 @@ Team workspace to share code snippets
 * Count of User Involved
 * Count of User Accepted (starts with 1 for the initial request)
 * Status (Pending/Completed)
-
 Note: None of the entries are unique
 
