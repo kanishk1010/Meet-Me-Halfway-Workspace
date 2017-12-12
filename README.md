@@ -20,6 +20,18 @@ Team workspace to share code snippets
 
 ## Notes
 
+### Lambdas:
+
+* Retrieve friends - Iris and Kanishk
+* New Request - Tory
+* Accept Invite - Kanishk
+* Recommendation Engine - Jean
+
+### Database - Tables:
+
+* User
+* Meetings
+
 
 
 
