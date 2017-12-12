@@ -1,0 +1,15 @@
+# User Registration request
+
+{
+"userID": "",
+"name": "",
+"email": "",
+"age": "",
+"registrationToken": "", #for push
+"phone": "", # optional
+"default address": "" #optional address string, could be reverse geo-coded
+}
+
+#Note: most of the info obtained from FB
+
+#Response: 200 OK
