@@ -1,0 +1,10 @@
+// To avoid consensus problem, the meeting proposer gets to decide the final venue
+{
+"meetingID": "",
+"userID": "",
+"date": "",
+"time": "",
+"googlePlaceID": "",
+}
+
+// other users are notified
