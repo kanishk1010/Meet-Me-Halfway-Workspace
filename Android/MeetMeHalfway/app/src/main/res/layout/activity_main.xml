@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainpage">
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@+id/button2"-->
+        <!--android:layout_alignLeft="@+id/button2"-->
+        <!--android:layout_alignStart="@+id/button2"-->
+        <!--android:layout_marginBottom="155dp"-->
+        <!--android:text="START\n       YOUR\n PLAN"-->
+        <!--android:textSize="40sp"-->
+        <!--android:textStyle="bold" />-->
+    <Button
+        android:id="@+id/Start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/confirmMeeting"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="46dp"
+        android:background="#fdc4b1b8"
+        android:onClick="getLocation"
+        android:padding="16dp"
+        android:text="START\n   YOUR\n PLAN"
+        android:textColor="#fde9e2e4"
+        android:textSize="24sp" />
+        <!--android:drawableLeft="@android:drawable/ic_menu_search"-->
+
+    <Button
+        android:id="@+id/viewPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="64dp"
+        android:background="#fdc4b1b8"
+        android:padding="16dp"
+        android:text="View\n   Invitation"
+        android:textColor="#fde9e2e4"
+        android:textSize="24sp"
+        android:onClick="getInvitationList"/>
+
+    <Button
+        android:id="@+id/confirmMeeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="#fdc4b1b8"
+        android:onClick="getConfirmMeeting"
+        android:padding="16dp"
+        android:text="Confirm Meeting"
+        android:textColor="#fde9e2e4"
+        android:textSize="24sp" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="logout"
+        android:text="logout"
+        android:id="@+id/button2" />
+
+
+
+
+
+</RelativeLayout>

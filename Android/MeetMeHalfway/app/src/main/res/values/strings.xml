@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MeetMeHalfway</string>
+    <string name="action_settings">Settings</string>
+    <string name="make_a_plan">Make A Plan!</string>
+    <string name="button">Button</string>
+    <string name="cancel_login" />
+    <string name="error_login" />
+    <string name="facebook_app_id">1731374280504688</string>
+    <string name="fb_login_protocol_scheme">fb1731374280504688</string>
+    <string name="lines_of_message_count" />
+    <string name="num_of_missed_messages" />
+    <string name="notification_number" />
+</resources>
