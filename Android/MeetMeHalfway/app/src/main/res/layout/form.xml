@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainpage">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
+        android:text="Name: "
+        android:textColor="#1e1c1c"/>
+
+    <EditText
+        android:id="@+id/EditTextName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toEndOf="@+id/birthday"
+        android:layout_toRightOf="@+id/birthday"
+        android:hint="name here..."
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:text="Birthday: "
+        android:textColor="#1e1c1c"/>
+
+    <EditText
+        android:id="@+id/EditBirthday"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EditTextName"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/birthday"
+        android:layout_toRightOf="@+id/birthday"
+        android:hint="Birthday here..."
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/meetingID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="126dp"
+        android:text="ID: "
+        android:textColor="#1e1c1c"/>
+
+    <EditText
+        android:id="@+id/EditUserID"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/meetingID"
+        android:layout_alignBottom="@+id/meetingID"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:hint="User ID here..."
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/meetingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="168dp"
+        android:text="Phone: "
+        android:textColor="#1e1c1c"/>
+
+    <EditText
+        android:id="@+id/EditUserPhone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/meetingDate"
+        android:layout_alignBottom="@+id/meetingDate"
+        android:layout_toEndOf="@+id/birthday"
+        android:layout_toRightOf="@+id/birthday"
+        android:hint="User phone here..."
+        android:inputType="textPersonName" />
+
+
+    <Button
+        android:id="@+id/button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:onClick="goMainScreen"
+        android:text="submit" />
+
+
+
+
+</RelativeLayout>
