@@ -23,7 +23,7 @@
         android:text="submit" />
 
     <ListView
-        android:id="@+id/PreferencelistView"
+        android:id="@+id/MeetinglistView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/testbutton"

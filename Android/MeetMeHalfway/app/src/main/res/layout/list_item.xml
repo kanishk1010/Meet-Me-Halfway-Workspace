@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Select"
         android:layout_alignParentRight="true"
         android:id="@+id/list_item_btn"/>
 </RelativeLayout>

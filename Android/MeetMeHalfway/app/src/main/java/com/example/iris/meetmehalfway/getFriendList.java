@@ -34,8 +34,8 @@ public class getFriendList extends AppCompatActivity{
         Intent intent = getIntent();
         String jsondata = intent.getStringExtra("jsondata");
         Bundle extras = getIntent().getExtras();
-        JSONArray friendslist;
-        ArrayList<String> friends = new ArrayList<String>();
+        final JSONArray friendslist;
+        final ArrayList<String> friends = new ArrayList<String>();
         final Map<String, String> friendsMap = new HashMap<>();
         try {
             friendslist = new JSONArray(jsondata);
@@ -48,7 +48,6 @@ public class getFriendList extends AppCompatActivity{
         }
 
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.content_friend_list, friends); // simple textview for list item
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,friends));
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -82,18 +81,23 @@ public class getFriendList extends AppCompatActivity{
                 Set<String> allInvitedUser = new HashSet<String>();
 
                 StringBuffer str = new StringBuffer();
-                for(int i=0;i<sp.size();i++){
-                    if(sp.valueAt(i)){
+                int i = 0;
+                while (!sp.get(i)) {
+                    i++;
+                }
+               // for(int i=0;i<sp.size();i++){
+                 //   if(sp.valueAt(i)){
                         String s = ((TextView) listView.getChildAt(i)).getText().toString();
                         String id = friendsMap.get(s);
                         allInvitedUser.add(id);
                         str = str.append(" ").append(id);
-                    }
-                }
+                 //   }
+                //}
                 editor.putStringSet("invitedFriendList", allInvitedUser);
                 editor.apply();
                 Toast.makeText(getFriendList.this, "Selected items are "+str.toString(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getFriendList.this, GetPreferences.class);
+                intent.putExtra("invitedFriendList", allInvitedUser.toArray());
                 startActivity(intent);
 
             }

@@ -20,19 +20,21 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 public class fillForm extends AppCompatActivity {
 
+    EditText IDText, nameText;
 
+    String name, ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            String name = bundle.getString("name");
-            EditText nameText = (EditText) findViewById(R.id.EditTextName);
+            name = bundle.getString("name");
+            nameText = (EditText) findViewById(R.id.EditTextName);
             nameText.setText(name);
-            String ID = bundle.getString("id");
-            EditText idText = (EditText) findViewById(R.id.EditUserID);
-            idText.setText(ID);
+            ID = bundle.getString("id");
+            IDText = (EditText) findViewById(R.id.EditUserID);
+            IDText.setText(ID);
         }
     }
 
@@ -45,17 +47,19 @@ public class fillForm extends AppCompatActivity {
             );
             AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
             DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
-            EditText nameText = (EditText)findViewById(R.id.EditTextName);
-            EditText IDText = (EditText)findViewById(R.id.EditUserID);
             EditText birthdayText = (EditText)findViewById(R.id.EditBirthday);
             EditText phoneText = (EditText)findViewById(R.id.EditUserPhone);
             User user = new User();
             user.setUserName(nameText.getText().toString());
             user.setUserID(IDText.getText().toString());
-            SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
-            final SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("UserID", IDText.getText().toString());
-            editor.apply();
+//
+//            SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
+//            final SharedPreferences.Editor editor = prefs.edit();
+//
+//            editor.putString("UserID", IDText.getText().toString());
+//            editor.putString("name", name);
+//            editor.apply();
+
             user.setUserBirthday(birthdayText.getText().toString());
             user.setUserPhone(phoneText.getText().toString());
             user.setDeviceToken(FirebaseInstanceId.getInstance().getToken());

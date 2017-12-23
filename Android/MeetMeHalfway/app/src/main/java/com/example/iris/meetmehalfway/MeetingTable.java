@@ -6,33 +6,26 @@ package com.example.iris.meetmehalfway;
 
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
 
+import java.util.List;
 import java.util.Map;
 
 @DynamoDBTable(tableName = "MeetingTable")
 public class MeetingTable {
-    private String MeetingID;
-    private Map<String, Boolean> acceptStatus;
+    private String meetingID;
     private String meetingDate;
     private String meetingTime;
-    private String morganizer;
+    private String organizer;
+    private List<String> confirmation;
+    private Map<String,List<String>> acceptStatus;
+    private Boolean finalStatus;
 
-    @DynamoDBHashKey(attributeName = "MeetingID")
+    @DynamoDBHashKey(attributeName = "MeetingId")
     public String getMeetingID() {
-        return MeetingID;
+        return meetingID;
     }
 
     public void setMeetingID(String meetingID) {
-        this.MeetingID = meetingID;
-    }
-
-
-    @DynamoDBAttribute(attributeName = "acceptStatus")
-    public Map<String, Boolean> getAcceptStatus() {
-        return acceptStatus;
-    }
-
-    public void setAcceptStatus(Map<String, Boolean> acceptStatus) {
-        this.acceptStatus = acceptStatus;
+        this.meetingID = meetingID;
     }
 
     @DynamoDBAttribute(attributeName = "meetingDate")
@@ -54,14 +47,31 @@ public class MeetingTable {
         this.meetingTime = meetingTime;
     }
 
-    @DynamoDBAttribute(attributeName = "morganizer")
-    public String getMorganizer() {
-        return morganizer;
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = "organizer-index",attributeName = "organizer")
+    public String getOrganizer() {
+        return organizer;
     }
 
-    public void setMorganizer(String morganizer) {
-        this.morganizer = morganizer;
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
     }
 
+    @DynamoDBAttribute(attributeName = "Confirmation")
+    public List<String> getConfirmation() {return confirmation;}
+
+    public void setConfirmation(List<String> confirmation) {this.confirmation = confirmation;}
+
+    @DynamoDBAttribute(attributeName = "acceptStatus")
+    public Map<String,List<String>> getAcceptStatus() {
+        return acceptStatus;
+    }
+
+    public void setAcceptStatus(Map<String,List<String>> acceptStatus) {
+        this.acceptStatus = acceptStatus;
+    }
+
+    @DynamoDBAttribute(attributeName = "finalStatus")
+    public Boolean getFinalStatus() {return finalStatus;}
+    public void setFinalStatus(Boolean finalStatus) {this.finalStatus = finalStatus;}
 
 }

@@ -11,9 +11,12 @@ import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 import com.facebook.AccessToken;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import java.io.IOException;
 //import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 //import com.amazonaws.regions.Regions;
 //import com.amazonaws.services.dynamodbv2.*;
@@ -36,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (AccessToken.getCurrentAccessToken() == null) {
+
             goLoginScreen();
         }
     }
 
     public void getLocation(View view) {
         Intent intent = new Intent(MainActivity.this, MapsActivityCurrentPlace.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -73,20 +76,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void logout(View view) {
+    public void logout(View view) throws IOException {
         LoginManager.getInstance().logOut();
+//        FirebaseInstanceId.getInstance().deleteInstanceId();
         goLoginScreen();
     }
 
     public void getInvitationList(View view) {
-        Intent intent = new Intent(MainActivity.this, ListInvitation.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(MainActivity.this, TasksPagerFragment.class);
         startActivity(intent);
     }
 
     public void getConfirmMeeting(View view) {
-        Intent intent = new Intent(MainActivity.this, ConfirmMeeting.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(MainActivity.this, MyMeetings.class);
         startActivity(intent);
     }
 

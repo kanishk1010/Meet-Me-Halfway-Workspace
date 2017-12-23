@@ -41,7 +41,7 @@
         android:layout_marginBottom="64dp"
         android:background="#fdc4b1b8"
         android:padding="16dp"
-        android:text="View\n   Invitation"
+        android:text="View\n   Invitations"
         android:textColor="#fde9e2e4"
         android:textSize="24sp"
         android:onClick="getInvitationList"/>
@@ -56,7 +56,7 @@
         android:background="#fdc4b1b8"
         android:onClick="getConfirmMeeting"
         android:padding="16dp"
-        android:text="Confirm Meeting"
+        android:text="MY Meetings"
         android:textColor="#fde9e2e4"
         android:textSize="24sp" />
 

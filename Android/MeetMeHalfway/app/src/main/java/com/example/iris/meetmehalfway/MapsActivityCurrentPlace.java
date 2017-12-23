@@ -40,18 +40,31 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.Set;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
 public class MapsActivityCurrentPlace extends AppCompatActivity implements OnMapReadyCallback {
 
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
     private static final String TAG = MapsActivityCurrentPlace.class.getSimpleName();
     private GoogleMap mMap;
     private CameraPosition mCameraPosition;
+    private String action = null;
+    private String meetingID = null;
 
     // The entry points to the Places API.
     private GeoDataClient mGeoDataClient;
@@ -86,6 +99,14 @@ public class MapsActivityCurrentPlace extends AppCompatActivity implements OnMap
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bundle = getIntent().getExtras();
+        try{
+            action = bundle.getString("action");
+            meetingID = bundle.getString("meetingID");
+        }catch (NullPointerException npe){
+            action = null;
+        }
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -355,15 +376,55 @@ public class MapsActivityCurrentPlace extends AppCompatActivity implements OnMap
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // The "which" argument contains the position of the selected item.
-                LatLng markerLatLng = mLikelyPlaceLatLngs[which];
+                final LatLng markerLatLng = mLikelyPlaceLatLngs[which];
 //                String markerSnippet = mLikelyPlaceAddresses[which];
                 SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
-                final SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("latitude", Double.toString(markerLatLng.latitude));
-                editor.putString("longitude", Double.toString(markerLatLng.longitude));
-                editor.apply();
-                getFriendList();
 
+                if (action != null) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
+                            String userID = prefs.getString("UserID", null);
+                            String name = prefs.getString("name", null);
+                            String latitude = Double.toString(markerLatLng.latitude);
+                            String longitude = Double.toString(markerLatLng.longitude);
+
+                            JSONObject object = new JSONObject();
+                            try {
+                                object.put("UserID", userID);
+                                object.put("latitude", latitude);
+                                object.put("longitude", longitude);
+                                object.put("IsAccepted", true);
+                                object.put("MeetingId", meetingID);
+                                object.put("userName", name);
+                            }catch (org.json.JSONException je){
+                                Log.d("JSON_error", je.getMessage());
+                            }
+
+                            OkHttpClient client = new OkHttpClient();
+                            RequestBody body = RequestBody.create(JSON, object.toString());
+                            Request request = new Request.Builder()
+                                    .url("https://ii9wvxky84.execute-api.us-east-1.amazonaws.com/Beta").post(body).build();
+                            Response response = null;
+                            try {
+                                response = client.newCall(request).execute();
+                                Log.i("new_meeting_request", response.body().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Intent intent = new Intent(MapsActivityCurrentPlace.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }).start();
+                }else {
+                    final SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("latitude", Double.toString(markerLatLng.latitude));
+                    editor.putString("longitude", Double.toString(markerLatLng.longitude));
+                    editor.apply();
+                    getFriendList();
+                }
 //                if (mLikelyPlaceAttributions[which] != null) {
 //                    markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
 //                }

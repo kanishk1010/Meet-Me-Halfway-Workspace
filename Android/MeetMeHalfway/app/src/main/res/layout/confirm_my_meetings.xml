@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/organizerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="54dp"
+        android:text="Meeting ID: "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizer"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/meetingDateText"
+        android:layout_toEndOf="@+id/meetingDateText"
+        android:layout_toRightOf="@+id/meetingDateText"
+        android:hint="Meeting ID"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/meetingDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/organizerText"
+        android:layout_alignStart="@+id/organizerText"
+        android:layout_below="@+id/organizerText"
+        android:layout_marginTop="66dp"
+        android:text="Meeting date: "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/meetingDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/meetingDateText"
+        android:layout_alignBottom="@+id/meetingDateText"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/meetingDateText"
+        android:layout_toRightOf="@+id/meetingDateText"
+        android:textSize="20sp"
+        android:hint="Meeting Date" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/status"
+        android:layout_alignBottom="@+id/status"
+        android:layout_alignLeft="@+id/meetingDateText"
+        android:layout_alignStart="@+id/meetingDateText"
+        android:text="Status: "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/organizer"
+        android:layout_alignStart="@+id/organizer"
+        android:layout_centerVertical="true"
+        android:hint="Status"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:text="Select Options" />
+
+
+
+
+</RelativeLayout>

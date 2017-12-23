@@ -5,6 +5,7 @@ package com.example.iris.meetmehalfway;
  */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import com.amazonaws.services.dynamodbv2.*;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -61,15 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                 new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        //Intent intent = new Intent(LoginActivity.this, fillForm.class);
                         try {
                             String name = object.getString("name");
                             String id = object.getString("id");
-                            CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                                    getApplicationContext(),    /* get the context for the application */
-                                    "us-east-1:502f9e0a-db62-4eb0-81fe-586814b7a8d2",    /* Identity Pool ID */
-                                    Regions.US_EAST_1           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
-                            );
                             checkUserExistance(id, name);
 
                         } catch (JSONException e) {
@@ -80,6 +76,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     protected void checkUserExistance(final String id, final String name) {
+        SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.putString("UserID", id);
+        editor.putString("name", name);
+        editor.apply();
+
         Runnable runnable = new Runnable() {
             public void run() {
                 CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
@@ -96,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("id", id);
                     startActivity(intent);
                 } else {
+                    existingUser.setDeviceToken(FirebaseInstanceId.getInstance().getToken());
+                    mapper.save(existingUser);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }

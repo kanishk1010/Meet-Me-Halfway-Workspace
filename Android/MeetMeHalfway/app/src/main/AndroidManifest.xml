@@ -73,7 +73,10 @@
         <activity android:name=".GetPreferences" />
         <activity android:name=".MoreMeetingInformation" />
         <activity android:name=".MapsActivityCurrentPlace" />
-        <activity android:name=".ListInvitation" />
         <activity android:name=".ConfirmMeeting" />
+        <activity android:name=".TasksPagerFragment" />
+        <activity android:name=".MyMeetings" />
+        <activity android:name=".MeetingInfo" />
+        <activity android:name=".MyMeetingsAction" />
     </application>
 </manifest>

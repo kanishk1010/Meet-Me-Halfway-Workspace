@@ -139,17 +139,22 @@ public class MoreMeetingInformation extends AppCompatActivity{
         new Thread(new Runnable() {
             @Override
             public void run() {
+
+
                 SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
                 Set<String> invitedFriends = prefs.getStringSet("invitedFriendList", null);
                 Set<String> selectedPreferences = prefs.getStringSet("allPreferences", null);
-
                 String userID = prefs.getString("UserID", null);
                 String meetDate = date.getText().toString();
                 String meeTime = time.getText().toString();
-                String newMeetingAPI = "";
                 String latitude = prefs.getString("latitude", null);
                 String longitude = prefs.getString("longitude", null);
-
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.remove("invitedFriendList");
+                editor.remove("allPreferences");
+                editor.remove("latitude");
+                editor.remove("longitude");
+                editor.apply();
                 JSONObject object = new JSONObject();
                 JSONArray preferences = new JSONArray(selectedPreferences);
                 JSONArray friends = new JSONArray(invitedFriends);

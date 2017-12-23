@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/place_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/place_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/place_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/venue_placeholder"
+        android:layout_alignBottom="@+id/venue_placeholder"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Venue: "
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/venue_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/category_placeholder"
+        android:layout_alignLeft="@+id/category_placeholder"
+        android:layout_alignStart="@+id/category_placeholder"
+        android:layout_marginBottom="14dp"
+        android:hint="Title"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/place_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/place_ratings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
+        android:text="Category: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/category_placeholder"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/place_category"
+        android:layout_alignBottom="@+id/place_category"
+        android:layout_centerHorizontal="true"
+        android:hint="Category"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/place_ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/place_price"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:text="Ratings: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ratings_placeholder"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/place_ratings"
+        android:layout_alignBottom="@+id/place_ratings"
+        android:layout_alignLeft="@+id/category_placeholder"
+        android:layout_alignStart="@+id/category_placeholder"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:hint="Ratings"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/place_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
+        android:text="Price Level: "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/price_level_placeholder"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/place_price"
+        android:layout_alignBottom="@+id/place_price"
+        android:layout_alignLeft="@+id/ratings_placeholder"
+        android:layout_alignStart="@+id/ratings_placeholder"
+        android:hint="price"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/organizerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="54dp"
+        android:text="Organizer: "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/organizer"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/organizerText"
+        android:layout_alignBottom="@+id/organizerText"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/organizerText"
+        android:layout_toRightOf="@+id/organizerText"
+        android:textSize="20sp"
+        android:hint="organizer" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/participantsText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="23dp"-->
+        <!--android:layout_marginStart="23dp"-->
+        <!--android:layout_marginTop="108dp"-->
+        <!--android:text="Participants: "-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/participants"-->
+        <!--android:layout_width="140dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/participantsText"-->
+        <!--android:layout_alignBottom="@+id/participantsText"-->
+        <!--android:layout_toEndOf="@+id/meetingDateText"-->
+        <!--android:layout_toRightOf="@+id/meetingDateText"-->
+        <!--android:hint="participants" />-->
+
+    <TextView
+        android:id="@+id/meetingDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/organizerText"
+        android:layout_alignStart="@+id/organizerText"
+        android:layout_below="@+id/organizerText"
+        android:layout_marginTop="66dp"
+        android:text="Meeting date: "
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/meetingDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/meetingDateText"
+        android:layout_alignBottom="@+id/meetingDateText"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/meetingDateText"
+        android:layout_toRightOf="@+id/meetingDateText"
+        android:textSize="20sp"
+        android:hint="Meeting Date" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/meetingTimeText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="23dp"-->
+        <!--android:layout_marginStart="23dp"-->
+        <!--android:layout_marginTop="216dp"-->
+        <!--android:text="Meeting time: "-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/meetingTime"-->
+        <!--android:layout_width="140dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/meetingTimeText"-->
+        <!--android:layout_alignBottom="@+id/meetingTimeText"-->
+        <!--android:layout_alignLeft="@+id/meetingDate"-->
+        <!--android:layout_alignStart="@+id/meetingDate"-->
+        <!--android:hint="Meeting Time" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/meetingLocationText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="23dp"-->
+        <!--android:layout_marginStart="23dp"-->
+        <!--android:layout_marginTop="260dp"-->
+        <!--android:text="Meeting location: "-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/meetingLocation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/meetingLocationText"-->
+        <!--android:layout_alignBottom="@+id/meetingLocationText"-->
+        <!--android:layout_toEndOf="@+id/meetingLocationText"-->
+        <!--android:layout_toRightOf="@+id/meetingLocationText"-->
+        <!--android:hint="Meeting Location"-->
+        <!--android:textSize="20sp" />-->
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/meetingDateText"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/meetingDateText"
+        android:layout_marginBottom="23dp"
+        android:text="Accept" />
+
+    <Button
+        android:id="@+id/button_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_accept"
+        android:layout_alignBottom="@+id/button_accept"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:text="Reject" />
+
+
+
+</RelativeLayout>

@@ -26,7 +26,7 @@ public class GetPreferences extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
         String[] allChoices = new String[]{"Cafe", "Sushi", "Indian", "Chinese", "Brunch", "Bar"};
-        final ListView listView = (ListView) findViewById(R.id.PreferencelistView);
+        final ListView listView = (ListView) findViewById(R.id.MeetinglistView);
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, allChoices));
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
