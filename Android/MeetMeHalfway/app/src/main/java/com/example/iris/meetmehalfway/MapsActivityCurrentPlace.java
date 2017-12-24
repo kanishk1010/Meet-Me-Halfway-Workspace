@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphRequestAsyncTask;
@@ -45,11 +44,9 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.Set;
 
@@ -375,9 +372,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity implements OnMap
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // The "which" argument contains the position of the selected item.
                 final LatLng markerLatLng = mLikelyPlaceLatLngs[which];
-//                String markerSnippet = mLikelyPlaceAddresses[which];
                 SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
 
                 if (action != null) {
@@ -418,27 +413,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity implements OnMap
                             startActivity(intent);
                         }
                     }).start();
-                }else {
+                } else {
                     final SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("latitude", Double.toString(markerLatLng.latitude));
                     editor.putString("longitude", Double.toString(markerLatLng.longitude));
                     editor.apply();
                     getFriendList();
                 }
-//                if (mLikelyPlaceAttributions[which] != null) {
-//                    markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
-//                }
-//
-//                // Add a marker for the selected place, with an info window
-//                // showing information about that place.
-//                mMap.addMarker(new MarkerOptions()
-//                        .title(mLikelyPlaceNames[which])
-//                        .position(markerLatLng)
-//                        .snippet(markerSnippet));
-//
-//                // Position the map's camera at the location of the marker.
-//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-//                        DEFAULT_ZOOM));
             }
         };
 
