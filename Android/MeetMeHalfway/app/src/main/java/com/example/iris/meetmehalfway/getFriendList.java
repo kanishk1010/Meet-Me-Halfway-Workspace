@@ -30,7 +30,6 @@ public class getFriendList extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friendlist);
-
         Intent intent = getIntent();
         String jsondata = intent.getStringExtra("jsondata");
         Bundle extras = getIntent().getExtras();
@@ -46,8 +45,6 @@ public class getFriendList extends AppCompatActivity{
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
         final ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_multiple_choice,friends));
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -65,26 +62,12 @@ public class getFriendList extends AppCompatActivity{
         // create shared preferences
         SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                **** for single item
-//                int p = listView.getCheckedItemPosition();
-//                if(p!=ListView.INVALID_POSITION) {
-//                    String s = ((TextView) listView.getChildAt(p)).getText().toString();
-//                    Toast.makeText(getFriendList.this, "Selected item is " + s, Toast.LENGTH_LONG).show();
-//                }else{
-//                    Toast.makeText(getFriendList.this, "Nothing Selected..", Toast.LENGTH_LONG).show();
-//                }
                 SparseBooleanArray sp = listView.getCheckedItemPositions();
                 Set<String> allInvitedUser = new HashSet<String>();
-
                 StringBuffer str = new StringBuffer();
-//                int i = 0;
-//                while (!sp.get(i)) {
-//                    i++;
-//                }
                 for (int j = 0; j < friends.size(); j++) {
                     if (sp.get(j)) {
                         String s = ((TextView) listView.getChildAt(j)).getText().toString();
@@ -92,15 +75,7 @@ public class getFriendList extends AppCompatActivity{
                         allInvitedUser.add(id);
                         str = str.append(" ").append(id);
                     }
-                }
-               // for(int i=0;i<sp.size();i++){
-                 //   if(sp.valueAt(i)){
-//                        String s = ((TextView) listView.getChildAt(i)).getText().toString();
-//                        String id = friendsMap.get(s);
-//                        allInvitedUser.add(id);
-//                        str = str.append(" ").append(id);
-                 //   }
-                //}
+                }             
                 editor.putStringSet("invitedFriendList", allInvitedUser);
                 editor.apply();
                 Toast.makeText(getFriendList.this, "Selected items are "+str.toString(), Toast.LENGTH_LONG).show();
