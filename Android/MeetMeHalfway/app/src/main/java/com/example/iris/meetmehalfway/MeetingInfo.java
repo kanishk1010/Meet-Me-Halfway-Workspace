@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
@@ -20,10 +19,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +33,7 @@ import java.util.Set;
 public class MeetingInfo extends AppCompatActivity{
 
     String organizer, meetingDate, status;
+
     TextView organizerName, date;
 
     public static final MediaType JSON
@@ -45,14 +43,9 @@ public class MeetingInfo extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.meeting_info);
-
         Bundle bundle = getIntent().getExtras();
         final String meetingID = bundle.getString("meetingID");
-
         new GetMeetingInfo().execute(meetingID);
-//        EditText nameText = (EditText) findViewById(R.id.EditTextName);
-//        nameText.setText(name);
-
         organizerName = (TextView) findViewById(R.id.organizer);
         date = (TextView) findViewById(R.id.meetingDate);
         Button accept = findViewById(R.id.button_accept);
@@ -66,27 +59,23 @@ public class MeetingInfo extends AppCompatActivity{
             }
 
         });
-
         Button reject = findViewById(R.id.button_reject);
         reject.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
-
                         String userID = prefs.getString("UserID", null);
                         String userName = prefs.getString("name", null);
-
                         JSONObject object = new JSONObject();
                         try {
                             object.put("UserID", userID);
                             object.put("MeetingId", meetingID);
                             object.put("IsAccepted", false);
                             object.put("userName", userName);
-                        }catch (org.json.JSONException je){
+                        } catch (org.json.JSONException je){
                             Log.d("JSON_error", je.getMessage());
                         }
 
@@ -108,12 +97,9 @@ public class MeetingInfo extends AppCompatActivity{
                 }).start();
             }
         });
-
-
     }
 
     public class GetMeetingInfo extends AsyncTask<String, Void, List<String>> {
-
         @Override
         protected List<String> doInBackground(String... strings) {
             String meetingID = strings[0];
@@ -132,7 +118,7 @@ public class MeetingInfo extends AppCompatActivity{
                 result.add(meeting.getMeetingDate());
                 if (meeting.getConfirmation().isEmpty()) {
                     result.add("ready");
-                }else result.add("completed");
+                } else result.add("completed");
                 Log.d("asyncLoad",  result.toString());
                 return result;
             }
@@ -141,7 +127,7 @@ public class MeetingInfo extends AppCompatActivity{
         }
         @Override
         protected void onPostExecute (List<String> result) {
-            if (result==null){
+            if (result==null) {
                 return;
             }
             organizer = result.get(0);
@@ -150,7 +136,5 @@ public class MeetingInfo extends AppCompatActivity{
             date.setText(meetingDate);
             status = result.get(2);
         }
-
-
     }
 }
