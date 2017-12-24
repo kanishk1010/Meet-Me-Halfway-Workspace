@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     meeting_status_table = dynamodb.Table('MeetingStatus')
     user_table = dynamodb.Table('Users')
 
-    sns = boto3.client('sns',aws_access_key_id= "AKIAIJSA22F7CLH7K7IQ",aws_secret_access_key="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", region_name = "us-east-1")
+    sns = boto3.client('sns', region_name = "us-east-1")
 
     meeting_item = meeting_table.get_item(
         Key={
