@@ -5,18 +5,14 @@ Team workspace to share code snippets
 ## Components
 
 * Android frontend
-* REST Backend with Lambda functions, API Gateway, Elasticsearch (Geo-Point), Kinesis, SNS, DynamoDB
-* APIs - Google Maps, Google Places, Twilio, Factual, Foursquare, Google Maps Directions API, Google Maps Distance Matrix API
+* REST Backend with Lambda functions, API Gateway, Elasticsearch (Geo-Point), Kinesis/Kafka, SNS, DynamoDB
+* APIs - Google Maps, Google Places, ~~Twilio, Factual, Foursquare, Google Maps Directions API, Google Maps Distance Matrix API~~ Firebase, Facebook API, 
 
 ## Languages
 
-* Android - **Java**/Kotlin
-* Backend - Python/Java, based on personal preference as Lambda functions can be in different languages.
+* Android (No experience!)- **Java**/Kotlin 
+* Backend Lambda- Python/Java, based on personal preference as Lambda functions can be in different languages.
 
-## To-Do
-
-* Pick up the components and create code snippets testing each of the APIs and AWS components, Keeping Lambda Functions in mind (every API call can be a lambda function through API Gateway).
-* 
 
 ## Notes
 
@@ -24,33 +20,38 @@ Team workspace to share code snippets
 
 * ~~Retrieve friends~~ Register User - Iris and Kanishk
 * New Request - Tory
-* Accept Invite - Kanishk
+* Accept/Reject Invite - Kanishk/Tory
 * Recommendation Engine - Jean
-* Confirmation - to avoid consensus problem, the proposer gets to decide final venue
+* Confirmation - to avoid consensus problem, the proposer gets to decide final venue - Tory
 
 ### Database - Tables:
 
-* User
+* Users
 * Meetings
 
 #### User table attributes
 
 * ID (unique)
 * Name
-* Email (unique)
-* Age
+* ~~Email (unique)~~
+* DOB
 * Gender
 * Phone
 * Registration Token for push (unique)
 * Default Location/Address
-* Status (Active/Inactive)
+* Status
+* Pending Invitations
+* Accepted Invitations
 
 #### Meetings attributes
 
-* Meeting ID 
-* UserID 
-* Count of User Involved
-* Count of User Accepted (starts with 1 for the initial request)
+* Meeting ID - Primary Index
+* UserID/Organizer - Global Secondary Index
+* PeopleInvited/Status
+* Confirmation/Recommendations
 * Status (Pending/Completed)
-Note: None of the entries are unique
 
+## Final individual Contributions
+* **Android** app with Facebook, Google Places, Google Maps, Firebase, AWS (DynamoDB & API Gateways) integration - PeiTzu/Kanishk
+* Lambdas: Recommendation Lambda - HuiChun, New Meeting & Confirmation - Tory, Accept/Reject Invite Lambda - Tory/Kanishk
+* Architecture and Integration Design/Plan (Backend and Android)- Kanishk/Pei-Tzu
