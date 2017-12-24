@@ -10,12 +10,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.*;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
-import com.amazonaws.services.dynamodbv2.model.*;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class fillForm extends AppCompatActivity {
@@ -42,7 +40,7 @@ public class fillForm extends AppCompatActivity {
         Runnable runnable = new Runnable() { public void run() {
             CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                     getApplicationContext(),    /* get the context for the application */
-                    "us-east-1:502f9e0a-db62-4eb0-81fe-586814b7a8d2",    /* Identity Pool ID */
+                    "*********************",    /* Identity Pool ID */
                     Regions.US_EAST_1           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
             );
             AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
@@ -52,14 +50,6 @@ public class fillForm extends AppCompatActivity {
             User user = new User();
             user.setUserName(nameText.getText().toString());
             user.setUserID(IDText.getText().toString());
-//
-//            SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
-//            final SharedPreferences.Editor editor = prefs.edit();
-//
-//            editor.putString("UserID", IDText.getText().toString());
-//            editor.putString("name", name);
-//            editor.apply();
-
             user.setUserBirthday(birthdayText.getText().toString());
             user.setUserPhone(phoneText.getText().toString());
             user.setDeviceToken(FirebaseInstanceId.getInstance().getToken());

@@ -38,21 +38,12 @@ public class GetPreferences extends AppCompatActivity {
                 Toast.makeText(GetPreferences.this, "Clicked item is " + s, Toast.LENGTH_LONG).show();
             }
         });
-
         SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
         Button btn = (Button) findViewById(R.id.testbutton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                **** for single item
-//                int p = listView.getCheckedItemPosition();
-//                if(p!=ListView.INVALID_POSITION) {
-//                    String s = ((TextView) listView.getChildAt(p)).getText().toString();
-//                    Toast.makeText(getFriendList.this, "Selected item is " + s, Toast.LENGTH_LONG).show();
-//                }else{
-//                    Toast.makeText(getFriendList.this, "Nothing Selected..", Toast.LENGTH_LONG).show();
-//                }
                 SparseBooleanArray sp = listView.getCheckedItemPositions();
                 StringBuffer str = new StringBuffer();
                 Set<String> allPreferences = new HashSet<String>();
@@ -63,21 +54,13 @@ public class GetPreferences extends AppCompatActivity {
                         str = str.append(" ").append(s);
                     }
                 }
-                // save preferences in sharedPreferences
                 editor.putStringSet("allPreferences", allPreferences);
                 editor.apply();
-
                 Toast.makeText(GetPreferences.this, "Selected items are " + str.toString(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(GetPreferences.this, MoreMeetingInformation.class);
-
                 editor.putStringSet("allPreferences", allPreferences);
                 editor.apply();
-
-                //Set<String> invitedFriends = prefs.getStringSet("invitedFriendList", null);
-
-                //Toast.makeText(GetPreferences.this, "Invited friends are " + invitedFriends.toString(), Toast.LENGTH_LONG).show();
                 startActivity(intent);
-
             }
 
         });
