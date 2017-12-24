@@ -10,7 +10,7 @@ class Interval():
 		return self.start >= other.start and self.end <= other.end
 
 def google_nearby(day, start, end, lat, lng, radius, preference_list):
-	AUTH_KEY = 'AIzaSyDTVUPaZKq_bJmvR3GF69xNWoZzbvMrFB8'
+	AUTH_KEY = ''
 	LOCATION = str(lat) + "," + str(lng)
 	RADIUS = radius #'rankby=distance', rankby must not be included if radius is specified.	
 	KEYWORD = ''
@@ -42,7 +42,7 @@ def google_nearby(day, start, end, lat, lng, radius, preference_list):
 		return place_id_pool[:10]
 
 def getPlace_details(place_id):
-	AUTH_KEY = 'AIzaSyDTVUPaZKq_bJmvR3GF69xNWoZzbvMrFB8'
+	AUTH_KEY = ''
 	url = ('https://maps.googleapis.com/maps/api/place/details/json?'
 			'place_id=%s'
 			'&key=%s'
