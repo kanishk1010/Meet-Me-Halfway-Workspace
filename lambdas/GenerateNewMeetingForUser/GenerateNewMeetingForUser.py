@@ -42,7 +42,7 @@ def lambda_handler(event, context):
         }
     )
     
-    push_service = FCMNotification(api_key="AAAAI7QSMgk:APA91bGiQ4Cbi9L1dnDyixObLdIOiBVBeBpwuiR8y0Am1WoUXK09UoM6uJCXo2S_gzqFycVbhd9YADyn4hYBdcNWqTfOqA2Ew_xgjz7eK5cqCOBkq3fvmCZbwOWIVWoqQkVJhsCHqkhr")
+    push_service = FCMNotification(api_key="")
     # # for friend in Friends:
     # # item = {
     # #         'MeetingId': meetingId,
@@ -51,7 +51,6 @@ def lambda_handler(event, context):
     # #         'meetingToWindow': meetingToWindow,
     # #         'preference': preference,
     # #     }
-    # result = push_service.notify_single_device(registration_id = "f-Fd1NnGd2w:APA91bEBgkS3XFxjx7kcGR-aTSpujFuogQKQP2VKFKPVueb5mp8sqoJ-850w3AHNr_3xFTqFt9mbEpd4qH4cNnok0rQyNdR38vunvevmxlmEsnZYSylluDlsN1QzeRmiwyJxOlDekuCX", message_body = "HelloWorld")
     # print(result)
     return 'Hello from Lambda'
 
@@ -106,7 +105,7 @@ def lambda_handler(event, context):
         }
     )
     
-    push_service = FCMNotification(api_key="AAAAI7QSMgk:APA91bGiQ4Cbi9L1dnDyixObLdIOiBVBeBpwuiR8y0Am1WoUXK09UoM6uJCXo2S_gzqFycVbhd9YADyn4hYBdcNWqTfOqA2Ew_xgjz7eK5cqCOBkq3fvmCZbwOWIVWoqQkVJhsCHqkhr")
+    push_service = FCMNotification(api_key="")
     for friend in Friends:
         message = {
                 'MeetingId': meetingId,
