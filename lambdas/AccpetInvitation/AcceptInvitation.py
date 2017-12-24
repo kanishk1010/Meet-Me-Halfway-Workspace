@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     meetingId = data['MeetingId']
     userId = data['UserID']
     isAccepted = data['IsAccepted']
-    push_service = FCMNotification(api_key="AAAAI7QSMgk:APA91bGiQ4Cbi9L1dnDyixObLdIOiBVBeBpwuiR8y0Am1WoUXK09UoM6uJCXo2S_gzqFycVbhd9YADyn4hYBdcNWqTfOqA2Ew_xgjz7eK5cqCOBkq3fvmCZbwOWIVWoqQkVJhsCHqkhr")
+    push_service = FCMNotification(api_key="AAAAI7QSMgk:")
     mycontext = Context(prec=6, rounding=ROUND_HALF_DOWN)
     setcontext(mycontext)
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://dynamodb.us-east-1.amazonaws.com")
