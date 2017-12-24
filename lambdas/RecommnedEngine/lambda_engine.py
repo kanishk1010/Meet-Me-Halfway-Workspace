@@ -44,7 +44,7 @@ def lambda_handler(event, context):
 		}
 		print json.dumps(jsonOut)
 
-		push_service = FCMNotification(api_key="AAAAI7QSMgk:APA91bGiQ4Cbi9L1dnDyixObLdIOiBVBeBpwuiR8y0Am1WoUXK09UoM6uJCXo2S_gzqFycVbhd9YADyn4hYBdcNWqTfOqA2Ew_xgjz7eK5cqCOBkq3fvmCZbwOWIVWoqQkVJhsCHqkhr")
+		push_service = FCMNotification(api_key="")
 		result = push_service.notify_single_device(registration_id = registrationID, 
 			message_body = json.dumps(jsonOut), data_message = data_message)
 		print result
