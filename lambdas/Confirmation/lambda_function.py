@@ -29,7 +29,7 @@ def lambda_handler(event, context):
 	
 	friends = meeting['Item']['acceptStatus']
 	
-	push_service = FCMNotification(api_key="AAAAI7QSMgk:APA91bGiQ4Cbi9L1dnDyixObLdIOiBVBeBpwuiR8y0Am1WoUXK09UoM6uJCXo2S_gzqFycVbhd9YADyn4hYBdcNWqTfOqA2Ew_xgjz7eK5cqCOBkq3fvmCZbwOWIVWoqQkVJhsCHqkhr")
+	push_service = FCMNotification(api_key="")
 	for friend in friends:
     	table = dynamodb.Table('Users')
 		response = table.get_item(
