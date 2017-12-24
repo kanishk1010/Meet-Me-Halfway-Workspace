@@ -142,14 +142,11 @@ public class TasksPagerFragment extends FragmentActivity{
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             Log.i("FragmentList", "Item clicked: " + id);
-            if (mNum==0) {
-                TextView tv = (TextView) l.getChildAt(position);
-                String meetingID = tv.getText().toString();
-                Intent intent = new Intent(getActivity(), MeetingInfo.class);
-                intent.putExtra("meetingID", meetingID);
-                startActivity(intent);
-            }
-
+            TextView tv = (TextView) l.getChildAt(position);
+            String meetingID = tv.getText().toString();
+            Intent intent = new Intent(getActivity(), MeetingInfo.class);
+            intent.putExtra("meetingID", meetingID);
+            startActivity(intent);
         }
     }
 

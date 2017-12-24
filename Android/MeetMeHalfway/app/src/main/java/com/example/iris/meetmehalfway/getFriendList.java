@@ -81,16 +81,24 @@ public class getFriendList extends AppCompatActivity{
                 Set<String> allInvitedUser = new HashSet<String>();
 
                 StringBuffer str = new StringBuffer();
-                int i = 0;
-                while (!sp.get(i)) {
-                    i++;
-                }
-               // for(int i=0;i<sp.size();i++){
-                 //   if(sp.valueAt(i)){
-                        String s = ((TextView) listView.getChildAt(i)).getText().toString();
+//                int i = 0;
+//                while (!sp.get(i)) {
+//                    i++;
+//                }
+                for (int j = 0; j < friends.size(); j++) {
+                    if (sp.get(j)) {
+                        String s = ((TextView) listView.getChildAt(j)).getText().toString();
                         String id = friendsMap.get(s);
                         allInvitedUser.add(id);
                         str = str.append(" ").append(id);
+                    }
+                }
+               // for(int i=0;i<sp.size();i++){
+                 //   if(sp.valueAt(i)){
+//                        String s = ((TextView) listView.getChildAt(i)).getText().toString();
+//                        String id = friendsMap.get(s);
+//                        allInvitedUser.add(id);
+//                        str = str.append(" ").append(id);
                  //   }
                 //}
                 editor.putStringSet("invitedFriendList", allInvitedUser);
