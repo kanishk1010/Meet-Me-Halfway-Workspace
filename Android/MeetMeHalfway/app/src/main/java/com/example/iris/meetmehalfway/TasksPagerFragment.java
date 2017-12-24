@@ -159,7 +159,7 @@ public class TasksPagerFragment extends FragmentActivity{
             List<List<String>> result = new LinkedList<>();
             CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                     getApplicationContext(),    /* get the context for the application */
-                    "us-east-1:502f9e0a-db62-4eb0-81fe-586814b7a8d2",    /* Identity Pool ID */
+                    "*********************",    /* Identity Pool ID */
                     Regions.US_EAST_1           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
             );
             AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
