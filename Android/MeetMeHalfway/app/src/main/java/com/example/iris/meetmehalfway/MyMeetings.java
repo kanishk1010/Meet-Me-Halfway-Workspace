@@ -13,13 +13,11 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBQueryExpression;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +33,6 @@ public class MyMeetings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.meetings_layout);
         SharedPreferences user = getSharedPreferences("Context", MODE_PRIVATE);
@@ -54,8 +51,6 @@ public class MyMeetings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     public class GetMyMeetings extends AsyncTask<String, Void, List<MeetingTable>> {
@@ -66,23 +61,15 @@ public class MyMeetings extends AppCompatActivity {
             Log.d("asyncLoad", userID);
             CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                     getApplicationContext(),    /* get the context for the application */
-                    "us-east-1:502f9e0a-db62-4eb0-81fe-586814b7a8d2",    /* Identity Pool ID */
+                    "***********************",    /* Identity Pool ID */
                     Regions.US_EAST_1           /* Region for your identity pool--US_EAST_1 or EU_WEST_1*/
             );
             AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
             DynamoDBMapper mapper = new DynamoDBMapper(ddbClient);
             MeetingTable meeting = new MeetingTable();
             meeting.setOrganizer(userID);
-//            DynamoDBScanExpression scan = new DynamoDBScanExpression()
-//                    .withFilterConditionEntry("organizer", new Condition()
-//                    .withComparisonOperator(ComparisonOperator.EQ)
-//                            .withAttributeValueList(new AttributeValue().withS(userID)));
-
-//            Condition condition = new Condition().withComparisonOperator(ComparisonOperator.EQ).
-//                    withAttributeValueList(new AttributeValue().withS(userID));
             DynamoDBQueryExpression<MeetingTable> queryExpression = new DynamoDBQueryExpression<MeetingTable>()
                     .withIndexName("organizer-index").withHashKeyValues(meeting).withConsistentRead(false);
-
             Log.d("query", queryExpression.toString());
             List<MeetingTable> meetings =  mapper.query(MeetingTable.class, queryExpression);
 

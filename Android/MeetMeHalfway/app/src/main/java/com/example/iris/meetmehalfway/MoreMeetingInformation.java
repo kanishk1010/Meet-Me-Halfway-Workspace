@@ -23,8 +23,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
 import com.amazonaws.regions.Regions;
@@ -35,10 +33,8 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -58,8 +54,11 @@ public class MoreMeetingInformation extends AppCompatActivity{
             = MediaType.parse("application/json; charset=utf-8");
 
     private EditText date;
+
     private DatePickerDialog.OnDateSetListener dateListener;
+
     private EditText time;
+
     private TimePickerDialog.OnTimeSetListener timeListener;
 
     @Override
@@ -74,7 +73,6 @@ public class MoreMeetingInformation extends AppCompatActivity{
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog dialog = new DatePickerDialog(
                         MoreMeetingInformation.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -92,7 +90,6 @@ public class MoreMeetingInformation extends AppCompatActivity{
                 Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minute = cal.get(Calendar.MINUTE);
-
                 TimePickerDialog dialog = new TimePickerDialog(
                         MoreMeetingInformation.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -107,8 +104,6 @@ public class MoreMeetingInformation extends AppCompatActivity{
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-//                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
-
                 String datetext = month + "/" + day + "/" + year;
                 date.setText(datetext);
             }
@@ -117,9 +112,6 @@ public class MoreMeetingInformation extends AppCompatActivity{
         timeListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                //month = month + 1;
-//                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
-
                 String datetext = hour + ":" + minute;
                 time.setText(datetext);
             }
@@ -134,13 +126,9 @@ public class MoreMeetingInformation extends AppCompatActivity{
     }
 
     public void goMainScreen(View view) throws IOException {
-        // retrieve previoous saved data
-
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-
                 SharedPreferences prefs = getSharedPreferences("Context", MODE_PRIVATE);
                 Set<String> invitedFriends = prefs.getStringSet("invitedFriendList", null);
                 Set<String> selectedPreferences = prefs.getStringSet("allPreferences", null);
@@ -185,9 +173,6 @@ public class MoreMeetingInformation extends AppCompatActivity{
                 startActivity(intent);
             }
         }).start();
-
-
-
     }
 
 }
