@@ -10,7 +10,7 @@ Team workspace to share code snippets
 
 ## Languages
 
-* Android (No experience!)- **Java**/Kotlin 
+* Android- **Java**/Kotlin 
 * Backend Lambda- Python/Java, based on personal preference as Lambda functions can be in different languages.
 
 
