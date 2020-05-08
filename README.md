@@ -6,7 +6,7 @@ Team workspace to share code snippets
 
 * Android frontend
 * REST Backend with Lambda functions, API Gateway, Elasticsearch (Geo-Point), Kinesis/Kafka, SNS, DynamoDB
-* APIs - Google Maps, Google Places, ~~Twilio, Factual, Foursquare, Google Maps Directions API, Google Maps Distance Matrix API~~ Firebase, Facebook API, 
+* APIs - Google Maps, Google Places,Firebase, Facebook API, 
 
 ## Languages
 
@@ -14,11 +14,13 @@ Team workspace to share code snippets
 * Backend Lambda- Python/Java, based on personal preference as Lambda functions can be in different languages.
 
 
-## Notes
+## Design
+
+![Data Flow Diagram](https://imgur.com/yQvVaHo.png)
 
 ### Lambdas:
 
-* ~~Retrieve friends~~ Register User - Iris and Kanishk
+* Register User - Iris and Kanishk
 * New Request - Tory
 * Accept/Reject Invite - Kanishk/Tory
 * Recommendation Engine - Jean
